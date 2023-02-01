@@ -1,4 +1,8 @@
-const x = 5;
-const y = 6;
-const z = x + y;
-console.log(z)
+const cars = ["Saab", "Volvo", "BMW"];
+console.log(cars);
+cars[0] = "Toyota";
+console.log(cars);
+cars.push("Audi");
+console.log(cars);
+cars.pop();
+console.log(cars);
