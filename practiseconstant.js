@@ -1,5 +1,5 @@
-let i;
-for(i=0;i<=10;i++)
-{
-    console.log("%d",i);
+let i = 1;
+while (i <= 10) {
+  console.log(i);
+  i += 1;
 }
