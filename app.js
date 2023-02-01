@@ -10,3 +10,9 @@ function blinkLED() { //function to start blinking
   }
 }
 
+process.on('SIGINT', function () {
+    LED.writeSync(0);
+    LED.unexport();
+    console.log('Bye, bye!');
+    process.exit();
+});
