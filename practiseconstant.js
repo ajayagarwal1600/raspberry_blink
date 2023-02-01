@@ -1,4 +1,7 @@
-const car = {type:"Fiat", model:"500", color:"white"};
-car.color = "red";
-car.owner = "Johnson";
-console.log(car);
+const x = 9;
+const y = 9;
+if (x === 0 || y === 0) {
+  console.log("x and y =0");
+} else {
+  console.log("x and y is not 0");
+}
