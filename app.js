@@ -1,18 +1,17 @@
-const Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-const LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
-setInterval(blinkLED, 250); //run the blinkLED function every 250ms
-
-function blinkLED() { //function to start blinking
-  if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-    LED.writeSync(1); //set pin state to 1 (turn LED on)
-  } else {
-    LED.writeSync(0); //set pin state to 0 (turn LED off)
-  }
-}
-
+var onoff = require('onoff');
+var Gpio = onoff.Gpio,
+    led = new Gpio(4, 'out'),
+    interval;
+interval = setInterval(function () {
+    var value = (led.readSync() + 1) % 2;
+    led.write(value, function () {
+        console.log("Changed LED state to: " + value);
+    });
+}, 2000);
 process.on('SIGINT', function () {
-    LED.writeSync(0);
-    LED.unexport();
+    clearInterval(interval);
+    led.writeSync(0);
+    led.unexport();
     console.log('Bye, bye!');
     process.exit();
-});
+})
